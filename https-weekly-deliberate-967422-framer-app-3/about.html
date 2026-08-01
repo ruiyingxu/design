@@ -10,7 +10,8 @@
     <title>About - Ruiying Xu</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body data-page="about">
+  <body class="grainient-page" data-page="about">
+    <div class="site-grainient" aria-hidden="true"><canvas></canvas></div>
     <div class="cursor" aria-hidden="true">
       <span class="cursor-dot"></span>
       <span class="cursor-ring"></span>
@@ -21,32 +22,29 @@
       <site-header></site-header>
 
       <main class="about-page">
+        <section class="about-page-stage" data-about-page-stage>
+          <div class="about-page-sticky">
         <section class="about-hero panel">
-          <p class="eyebrow reveal">About</p>
           <div class="about-hero-grid">
             <div class="about-hero-copy reveal">
-              <h1 class="about-page-title">
-                <span>Elevating through</span><br />
-                <span>human-centered</span><br />
-                <em>design</em>
-              </h1>
-            </div>
-            <div class="about-hero-meta reveal">
-              <p>Product Designer based in New York</p>
-              <p>Designing AI, enterprise, and visual systems with clarity and care.</p>
+              <h1 class="about-page-title">Human First.</h1>
+              <p class="about-hero-tagline">Designing thoughtful AI and enterprise experiences.</p>
             </div>
           </div>
         </section>
 
-        <section class="about-story panel">
+        <section class="about-story panel about-intro-view about-intro-story">
           <div class="about-section-heading reveal">
             <p class="eyebrow">Who Am I</p>
             <h2 class="about-section-title about-section-title--small">A short introduction</h2>
           </div>
           <div class="about-story-grid">
+            <figure class="about-story-portrait reveal">
+              <img src="./assets/about/ruiying-xu-portrait.webp" width="1010" height="1516" alt="Black-and-white portrait of Ruiying Xu" loading="lazy" decoding="async">
+            </figure>
             <div class="about-story-copy reveal">
               <p>
-                Hi, I'm <strong>Ruiying Xu</strong>, a product designer based in New York City.
+                Hi, I'm <strong class="brand-name">Ruiying Xu</strong>, a product designer based in New York City.
                 I'm currently pursuing a BFA in Design at the School of Visual Arts, where I
                 focus on building thoughtful digital experiences that balance visual clarity,
                 systems thinking, and usability.
@@ -58,56 +56,19 @@
                 and more human.
               </p>
             </div>
-            <div class="about-story-stats reveal">
-              <div><strong>2x</strong><span>ServiceNow product design internships</span></div>
-              <div><strong>3.95</strong><span>GPA at School of Visual Arts</span></div>
-              <div><strong>2027</strong><span>Expected BFA Design graduation</span></div>
-            </div>
           </div>
         </section>
 
-        <section class="about-process panel">
-          <div class="about-section-heading reveal">
-            <p class="eyebrow">Process</p>
-            <h2 class="about-section-title">How I Work</h2>
+        <section class="about-process about-philosophy panel about-intro-view about-intro-philosophy">
+          <div class="about-philosophy-intro reveal">
+            <p class="eyebrow">Design Philosophy</p>
           </div>
-          <div class="about-process-list">
-            <article class="about-process-item reveal">
-              <span>01</span>
-              <div>
-                <h3>Research</h3>
-                <p>I begin by understanding the product space, user behavior, and workflow constraints through competitive analysis, audits, and discovery conversations.</p>
-              </div>
-            </article>
-            <article class="about-process-item reveal">
-              <span>02</span>
-              <div>
-                <h3>Frame</h3>
-                <p>I turn findings into design directions, prioritizing the problems that matter most and defining flows that can scale across product surfaces.</p>
-              </div>
-            </article>
-            <article class="about-process-item reveal">
-              <span>03</span>
-              <div>
-                <h3>Design</h3>
-                <p>I create wireframes, high-fidelity UI, and interaction patterns that simplify complex experiences while staying visually cohesive.</p>
-              </div>
-            </article>
-            <article class="about-process-item reveal">
-              <span>04</span>
-              <div>
-                <h3>Prototype</h3>
-                <p>I build interactive prototypes to test concepts, communicate intent clearly, and align with product managers, engineers, and stakeholders.</p>
-              </div>
-            </article>
-            <article class="about-process-item reveal">
-              <span>05</span>
-              <div>
-                <h3>Systemize</h3>
-                <p>I document reusable components and handoff details so the final work is consistent, scalable, and easier for teams to implement.</p>
-              </div>
-            </article>
+          <div class="about-philosophy-principles reveal" aria-label="Design principles">
+            <p>Clarity.</p>
+            <p>Care.</p>
+            <p>Craft.</p>
           </div>
+          <p class="about-philosophy-statement reveal">Designing AI products<br>that people actually enjoy using.</p>
         </section>
 
         <section class="about-experience panel">
@@ -240,11 +201,14 @@
             <a class="contact-cta-button" href="mailto:yingingxu88@gmail.com">Get In Touch</a>
           </div>
         </section>
+          </div>
+        </section>
       </main>
 
       <site-footer></site-footer>
     </div>
     <script src="./scripts/project-data.js"></script>
+    <script src="./scripts/grainient-background.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

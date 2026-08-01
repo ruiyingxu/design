@@ -10,7 +10,8 @@
     <title>Works - Ruiying Xu</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body data-page="works">
+  <body class="grainient-page" data-page="works">
+    <div class="site-grainient" aria-hidden="true"><canvas></canvas></div>
     <div class="cursor" aria-hidden="true">
       <span class="cursor-dot"></span>
       <span class="cursor-ring"></span>
@@ -21,6 +22,8 @@
       <site-header></site-header>
 
       <main class="works-page">
+        <section class="listing-page-stage" data-listing-page-stage>
+          <div class="listing-page-sticky">
         <section class="works-hero panel">
           <div class="works-hero-copy reveal">
             <h1 class="works-page-title">
@@ -30,10 +33,7 @@
         </section>
 
         <section class="works-listing panel">
-          <div class="works-projects works-projects--grid">
-            <project-card project="forma" variant="listing" eager></project-card>
-            <project-card project="museumOfTechnology" variant="listing"></project-card>
-          </div>
+          <project-collection class="works-projects works-projects--grid" source="works" variant="listing"></project-collection>
         </section>
 
         <section class="contact-cta-panel panel reveal">
@@ -43,11 +43,14 @@
             <a class="contact-cta-button" href="mailto:yingingxu88@gmail.com">Get In Touch</a>
           </div>
         </section>
+          </div>
+        </section>
       </main>
 
       <site-footer></site-footer>
     </div>
     <script src="./scripts/project-data.js"></script>
+    <script src="./scripts/grainient-background.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>

@@ -10,7 +10,8 @@
     <title>Contact - Ruiying Xu</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body data-page="contact">
+  <body class="grainient-page" data-page="contact">
+    <div class="site-grainient" aria-hidden="true"><canvas></canvas></div>
     <div class="cursor" aria-hidden="true">
       <span class="cursor-dot"></span>
       <span class="cursor-ring"></span>
@@ -21,6 +22,8 @@
       <site-header></site-header>
 
       <main class="contact-page">
+        <section class="contact-page-stage" data-contact-page-stage>
+          <div class="contact-page-sticky">
         <section class="contact-hero panel">
           <div class="contact-hero-copy reveal">
             <h1 class="contact-page-title">
@@ -73,38 +76,66 @@
           </div>
         </section>
 
-        <section class="contact-faq panel">
-          <div class="contact-faq-grid">
-            <div class="contact-faq-copy reveal">
-              <p class="eyebrow">FAQ</p>
-              <h2 class="contact-section-title">Quick Answers</h2>
-            </div>
-            <div class="contact-faq-list">
-              <article class="contact-faq-item reveal">
-                <h3>How do I start a project with you ?</h3>
-                <p>Send me an email with your timeline, goals, and any background materials. I'll follow up with next steps and availability.</p>
-              </article>
-              <article class="contact-faq-item reveal">
-                <h3>What kind of projects do you usually take on ?</h3>
-                <p>I mainly work on product design, UI/UX, design systems, visual identity, and selected web experiences.</p>
-              </article>
-              <article class="contact-faq-item reveal">
-                <h3>Do you also collaborate with developers and product teams ?</h3>
-                <p>Yes. I enjoy working cross-functionally with product managers, engineers, and other designers to shape and refine implementation.</p>
-              </article>
-              <article class="contact-faq-item reveal">
-                <h3>Are you open to internships, freelance, or full-time opportunities ?</h3>
-                <p>Yes, depending on the timing and fit. I'm happy to discuss internships, freelance collaborations, and product design roles.</p>
-              </article>
-            </div>
-          </div>
-        </section>
+            <section class="contact-cta-panel contact-qa-view contact-qa-contact is-visible" aria-label="Start a project">
+              <div class="contact-cta-inner">
+                <p class="contact-cta-eyebrow">HAVE A PROJECT IN MIND ?</p>
+                <svg class="contact-lens-filter" width="0" height="0" aria-hidden="true" focusable="false">
+                  <filter id="contact-lens-distortion" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.018 0.035" numOctaves="1" seed="7" result="lens-noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="lens-noise" scale="3.5" xChannelSelector="R" yChannelSelector="B" />
+                  </filter>
+                </svg>
+                <a class="contact-cta-headline contact-title contact-lens-heading" data-lens-text="LET'S WORK TOGETHER" href="mailto:yingingxu88@gmail.com">LET'S WORK TOGETHER</a>
+                <a class="contact-cta-button" href="mailto:yingingxu88@gmail.com">Get In Touch</a>
+              </div>
+            </section>
 
-        <section class="contact-cta-panel panel reveal">
-          <div class="contact-cta-inner">
-            <p class="contact-cta-eyebrow">HAVE A PROJECT IN MIND ?</p>
-            <a class="contact-cta-headline contact-title" href="mailto:yingingxu88@gmail.com">LET'S WORK TOGETHER</a>
-            <a class="contact-cta-button" href="mailto:yingingxu88@gmail.com">Get In Touch</a>
+            <section class="contact-faq contact-qa-view contact-qa-faq" aria-label="Frequently asked questions">
+              <div class="contact-faq-grid">
+                <div class="contact-faq-copy">
+                  <p class="eyebrow">FAQ</p>
+                  <h2 class="contact-section-title">Quick<br />Answers</h2>
+                </div>
+                <div class="contact-faq-list">
+                  <article class="contact-faq-item">
+                    <button class="contact-faq-trigger" type="button" aria-expanded="false" aria-controls="contact-faq-answer-1" id="contact-faq-question-1">
+                      <h3>How do I start a project with you ?</h3>
+                      <span class="contact-faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="contact-faq-answer" id="contact-faq-answer-1" role="region" aria-labelledby="contact-faq-question-1" aria-hidden="true">
+                      <div class="contact-faq-answer-inner"><p>Send me an email with your timeline, goals, and any background materials. I'll follow up with next steps and availability.</p></div>
+                    </div>
+                  </article>
+                  <article class="contact-faq-item">
+                    <button class="contact-faq-trigger" type="button" aria-expanded="false" aria-controls="contact-faq-answer-2" id="contact-faq-question-2">
+                      <h3>What kind of projects do you usually take on ?</h3>
+                      <span class="contact-faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="contact-faq-answer" id="contact-faq-answer-2" role="region" aria-labelledby="contact-faq-question-2" aria-hidden="true">
+                      <div class="contact-faq-answer-inner"><p>I mainly work on product design, UI/UX, design systems, visual identity, and selected web experiences.</p></div>
+                    </div>
+                  </article>
+                  <article class="contact-faq-item">
+                    <button class="contact-faq-trigger" type="button" aria-expanded="false" aria-controls="contact-faq-answer-3" id="contact-faq-question-3">
+                      <h3>Do you also collaborate with developers and product teams ?</h3>
+                      <span class="contact-faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="contact-faq-answer" id="contact-faq-answer-3" role="region" aria-labelledby="contact-faq-question-3" aria-hidden="true">
+                      <div class="contact-faq-answer-inner"><p>Yes. I enjoy working cross-functionally with product managers, engineers, and other designers to shape and refine implementation.</p></div>
+                    </div>
+                  </article>
+                  <article class="contact-faq-item">
+                    <button class="contact-faq-trigger" type="button" aria-expanded="false" aria-controls="contact-faq-answer-4" id="contact-faq-question-4">
+                      <h3>Are you open to internships, freelance, or full-time opportunities ?</h3>
+                      <span class="contact-faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="contact-faq-answer" id="contact-faq-answer-4" role="region" aria-labelledby="contact-faq-question-4" aria-hidden="true">
+                      <div class="contact-faq-answer-inner"><p>Yes, depending on the timing and fit. I'm happy to discuss internships, freelance collaborations, and product design roles.</p></div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </section>
           </div>
         </section>
       </main>
@@ -112,6 +143,7 @@
       <site-footer></site-footer>
     </div>
     <script src="./scripts/project-data.js"></script>
+    <script src="./scripts/grainient-background.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

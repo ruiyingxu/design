@@ -389,3 +389,392 @@
   opacity: 1;
   transform: translateY(0) scale(1);
 }
+
+/* Contact CTA and Q&A share one scroll-driven viewport on desktop. */
+.contact-qa-stage {
+  border-top: 1px solid var(--line);
+  min-height: 190svh;
+  position: relative;
+}
+
+.contact-qa-sticky {
+  height: 100svh;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+.contact-qa-view {
+  inset: 0;
+  padding: clamp(92px, 8vw, 138px) 5.4vw clamp(70px, 6vw, 108px);
+  position: absolute;
+  transition:
+    opacity .82s cubic-bezier(.76, 0, .24, 1),
+    transform .82s cubic-bezier(.76, 0, .24, 1),
+    visibility 0s linear .82s;
+}
+
+.contact-qa-stage .contact-qa-contact {
+  border: 0;
+  min-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(100%);
+  visibility: hidden;
+}
+
+.contact-page .contact-qa-stage .contact-cta-inner {
+  justify-items: center;
+  padding: 0;
+  text-align: center;
+}
+
+.contact-qa-faq {
+  align-items: center;
+  display: grid;
+  opacity: 1;
+  overflow-y: auto;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
+  visibility: visible;
+}
+
+.contact-qa-stage.is-qa-active .contact-qa-contact {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
+  visibility: visible;
+}
+
+.contact-qa-stage.is-qa-active .contact-qa-faq {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  visibility: hidden;
+}
+
+.contact-qa-stage .contact-faq-grid {
+  align-items: start;
+  width: 100%;
+}
+
+.contact-qa-stage .contact-section-title {
+  font-size: clamp(68px, 7.7vw, 138px);
+  line-height: .82;
+}
+
+.contact-qa-stage .contact-faq-item {
+  display: block;
+  padding: 0;
+}
+
+.contact-faq-trigger {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  padding: 24px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.contact-faq-trigger h3 {
+  font: inherit;
+  font-size: clamp(25px, 1.85vw, 34px);
+  font-weight: 500;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.contact-faq-icon {
+  height: 18px;
+  position: relative;
+  width: 18px;
+}
+
+.contact-faq-icon::before,
+.contact-faq-icon::after {
+  background: currentColor;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform .4s cubic-bezier(.76, 0, .24, 1);
+}
+
+.contact-faq-icon::before {
+  height: 1px;
+  width: 18px;
+}
+
+.contact-faq-icon::after {
+  height: 18px;
+  width: 1px;
+}
+
+.contact-faq-item.is-open .contact-faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.contact-faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows .4s cubic-bezier(.76, 0, .24, 1),
+    opacity .32s cubic-bezier(.76, 0, .24, 1);
+}
+
+.contact-faq-answer-inner {
+  overflow: hidden;
+}
+
+.contact-faq-answer p {
+  margin: 0;
+  max-width: 62ch;
+  padding: 0 52px 24px 0;
+  transform: translateY(-8px);
+  transition: transform .4s cubic-bezier(.76, 0, .24, 1);
+}
+
+.contact-faq-item.is-open .contact-faq-answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.contact-faq-item.is-open .contact-faq-answer p {
+  transform: translateY(0);
+}
+
+.contact-faq-trigger:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 6px;
+}
+
+@media (max-width: 900px) {
+  .contact-qa-stage {
+    min-height: 0;
+  }
+
+  .contact-qa-sticky {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+    position: static;
+  }
+
+  .contact-qa-view,
+  .contact-qa-stage.is-qa-active .contact-qa-contact,
+  .contact-qa-stage.is-qa-active .contact-qa-faq {
+    inset: auto;
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    transform: none;
+    visibility: visible;
+  }
+
+  .contact-qa-stage .contact-qa-contact {
+    min-height: 62svh;
+    order: 2;
+    padding: 24vw 22px;
+  }
+
+  .contact-page .contact-qa-stage .contact-cta-inner {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .contact-qa-faq {
+    border-top: 1px solid var(--line);
+    order: 1;
+    overflow: visible;
+    padding: 24vw 22px;
+  }
+
+  .contact-qa-stage .contact-faq-grid {
+    gap: 60px;
+  }
+
+  .contact-qa-stage .contact-section-title {
+    font-size: clamp(58px, 16vw, 92px);
+  }
+
+  .contact-faq-trigger {
+    gap: 20px;
+    min-height: 76px;
+    padding: 22px 0;
+  }
+
+  .contact-faq-trigger h3 {
+    font-size: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-qa-view,
+  .contact-faq-answer,
+  .contact-faq-answer p,
+  .contact-faq-icon::before,
+  .contact-faq-icon::after {
+    transition-duration: .01ms !important;
+  }
+}
+
+.contact-lens-filter {
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+}
+
+.contact-lens-heading {
+  --lens-x: 50%;
+  --lens-y: 50%;
+  --lens-opacity: 0;
+  --lens-radius: 60px;
+  --lens-scale: 1;
+  isolation: isolate;
+  position: relative;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-lens-heading::after {
+    -webkit-mask-image: radial-gradient(
+      circle var(--lens-radius) at var(--lens-x) var(--lens-y),
+      #000 0%,
+      rgba(0, 0, 0, .98) 48%,
+      rgba(0, 0, 0, .7) 70%,
+      rgba(0, 0, 0, .2) 88%,
+      transparent 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    color: inherit;
+    content: attr(data-lens-text);
+    filter: url("#contact-lens-distortion");
+    inset: 0;
+    mask-image: radial-gradient(
+      circle var(--lens-radius) at var(--lens-x) var(--lens-y),
+      #000 0%,
+      rgba(0, 0, 0, .98) 48%,
+      rgba(0, 0, 0, .7) 70%,
+      rgba(0, 0, 0, .2) 88%,
+      transparent 100%
+    );
+    mask-repeat: no-repeat;
+    opacity: var(--lens-opacity);
+    pointer-events: none;
+    position: absolute;
+    transform: scale(var(--lens-scale));
+    transform-origin: var(--lens-x) var(--lens-y);
+    user-select: none;
+    white-space: inherit;
+    will-change: mask-image, opacity, transform;
+    z-index: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-lens-heading::after {
+    content: none !important;
+  }
+}
+
+/* Every Contact section participates in one reversible desktop stage. */
+.contact-page-stage {
+  --contact-slide-count: 4;
+  height: calc(var(--contact-slide-count) * 100svh);
+  position: relative;
+}
+
+.contact-page-sticky {
+  height: 100svh;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+.contact-page .contact-page-sticky > section {
+  border-top: 0;
+  height: 100svh;
+  inset: 0;
+  min-height: 100svh;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: none;
+  position: absolute;
+  transform: translateY(100%);
+  transition: opacity .82s cubic-bezier(.76, 0, .24, 1), transform .82s cubic-bezier(.76, 0, .24, 1), visibility 0s linear .82s;
+  visibility: hidden;
+  width: 100%;
+}
+
+.contact-page .contact-page-sticky > section:first-child,
+.contact-page .contact-page-sticky > section.is-contact-slide-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
+  visibility: visible;
+}
+
+.contact-page .contact-page-sticky > section.is-contact-slide-before {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.contact-page .contact-page-sticky > section.is-contact-slide-after {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+@media (max-width: 900px) {
+  .contact-page-stage,
+  .contact-page-sticky {
+    height: auto;
+  }
+
+  .contact-page-sticky {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    position: static;
+  }
+
+  .contact-page .contact-page-sticky > section,
+  .contact-page .contact-page-sticky > section:first-child,
+  .contact-page .contact-page-sticky > section.is-contact-slide-active,
+  .contact-page .contact-page-sticky > section.is-contact-slide-before,
+  .contact-page .contact-page-sticky > section.is-contact-slide-after {
+    height: auto;
+    inset: auto;
+    opacity: 1;
+    overflow: visible;
+    pointer-events: auto;
+    position: relative;
+    transform: none;
+    visibility: visible;
+  }
+
+  .contact-page-sticky > .contact-hero { order: 1; }
+  .contact-page-sticky > .contact-main { order: 2; }
+  .contact-page-sticky > .contact-qa-faq { order: 3; }
+  .contact-page-sticky > .contact-qa-contact { order: 4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-page .contact-page-sticky > section {
+    transition-duration: .01ms !important;
+  }
+}

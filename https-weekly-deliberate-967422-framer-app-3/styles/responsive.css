@@ -103,11 +103,12 @@
   .project-detail-more-grid,
   .project-detail-summary-grid,
   .project-detail-section-head { grid-template-columns: 1fr; }
+  body.dw-page .dw-final-story { grid-template-columns: 1fr; }
   .project-detail-strap { justify-self: start; max-width: none; text-align: left; }
   .project-detail-hero-media img,
   .project-detail-gallery-feature img { aspect-ratio: 1 / 1.12; }
   .project-detail-more-heading { align-items: start; flex-direction: column; }
-  .project-detail-more-card img,
+  .project-detail-more-card img { aspect-ratio: 16 / 9; }
   .project-detail-gallery-row figure img { aspect-ratio: 1 / 1.1; }
   .contact-page { padding-top: 76px; }
   .contact-page .panel + .panel { padding-top: 24vw; padding-bottom: 24vw; }

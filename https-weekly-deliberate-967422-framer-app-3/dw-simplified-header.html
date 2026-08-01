@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body class="dw-page" data-page="project">
+    <div class="project-grainient" aria-hidden="true"><canvas></canvas></div>
     <div class="cursor" aria-hidden="true">
       <span class="cursor-dot"></span><span class="cursor-ring"></span><span class="cursor-label">View</span>
     </div>
@@ -45,10 +46,12 @@
         <section class="panel">
           <div class="project-detail-overview">
             <div class="project-detail-meta reveal">
-              <div class="project-detail-meta-group"><span>Services</span><p>Workflow UX<br />Interaction Design<br />Prototype Testing</p></div>
-              <div class="project-detail-meta-group"><span>Client</span><p>ServiceNow</p></div>
-              <div class="project-detail-meta-group"><span>Product</span><p>Dynamic Window</p></div>
-              <div class="project-detail-meta-group"><span>Year</span><p>2026</p></div>
+              <div class="project-detail-meta-group"><span>Role</span><p>Product Designer (Intern)</p></div>
+              <div class="project-detail-meta-group"><span>Time</span><p>2026</p></div>
+              <div class="project-detail-meta-group"><span>Approach</span><p>Requirement decomposition<br>Interaction direction exploration<br>High-fidelity prototyping (Figma Make)<br>Usability validation</p></div>
+              <div class="project-detail-meta-group"><span>Output</span><p>Dynamic Window unified header solution<br>Lightweight guidance content and teachable interactions</p></div>
+              <div class="project-detail-meta-group"><span>Reflection</span><p>Optimizing high-frequency workflows should balance onboarding clarity and in-task efficiency without sacrificing either.</p></div>
+              <div class="project-detail-meta-group"><span>Result</span><p>Improved primary-action discoverability and cross-state consistency.</p></div>
             </div>
             <div class="project-detail-info reveal">
               <p>
@@ -67,77 +70,9 @@
         </section>
 
         <section class="panel">
-          <div class="project-detail-summary-grid">
-            <article class="project-detail-summary-card reveal">
-              <span class="project-detail-story-label">Role</span>
-              <h3>Simplify a high-frequency AI workflow surface.</h3>
-              <p>I focused on how the header should teach itself while still feeling lighter and more consolidated.</p>
-            </article>
-            <article class="project-detail-summary-card reveal">
-              <span class="project-detail-story-label">Goal</span>
-              <h3>Help users find six key actions faster.</h3>
-              <p>The redesign aimed to reduce hunting across states and create one more predictable control surface.</p>
-            </article>
-            <article class="project-detail-summary-card reveal">
-              <span class="project-detail-story-label">Output</span>
-              <h3>Consolidated header plus onboarding support.</h3>
-              <p>The final proposal paired a cleaner header structure with tooltips that improved first-use understanding.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel">
           <div class="project-detail-section-head reveal">
             <div>
-              <p class="project-detail-story-label">Challenge</p>
-              <h2>Six actions needed to be easier to discover.</h2>
-            </div>
-            <p>
-              Expand, pop out, start a new chat, close, and related controls all needed to feel
-              consolidated and consistent. The goal was to reduce friction without hiding power.
-            </p>
-          </div>
-          <div class="project-detail-story">
-            <article class="project-detail-story-card reveal">
-              <span class="project-detail-story-label">Goal</span>
-              <h3>Create one consolidated header.</h3>
-              <p>
-                The header needed to unify six key actions so users could find them more quickly
-                no matter which Dynamic Window state they were in.
-              </p>
-            </article>
-            <article class="project-detail-story-card reveal">
-              <span class="project-detail-story-label">Constraint</span>
-              <h3>Keep discoverability while reducing clutter.</h3>
-              <p>
-                The design could not simply remove controls. It had to preserve usability while
-                making the surface feel less busy and more coherent.
-              </p>
-            </article>
-            <article class="project-detail-story-card reveal">
-              <span class="project-detail-story-label">State Logic</span>
-              <h3>The header had to stay consistent everywhere.</h3>
-              <p>
-                Users move between multiple DW states, so the pattern needed to remain stable enough
-                to build confidence instead of forcing relearning.
-              </p>
-            </article>
-            <article class="project-detail-story-card reveal">
-              <span class="project-detail-story-label">Success</span>
-              <h3>Support first-time understanding.</h3>
-              <p>
-                Onboarding tooltips became part of the solution so the simplified header still
-                taught itself on first use.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="project-detail-section-head reveal">
-            <div>
-              <p class="project-detail-story-label">Context</p>
-              <h2>Dynamic Window had to stay helpful without pulling users out of the workflow.</h2>
+              <h2>A clearer header without leaving the workflow.</h2>
             </div>
             <p>
               Because DW lives beside active product work, even a small control surface has to feel
@@ -164,8 +99,7 @@
         <section class="panel">
           <div class="project-detail-section-head reveal">
             <div>
-              <p class="project-detail-story-label">Exploration</p>
-              <h2>Three directions helped compare how much clarity each approach created.</h2>
+              <h2>Three directions for a clearer header.</h2>
             </div>
             <p>
               Katherine explored three directions first, and I collaborated on version three using
@@ -221,7 +155,7 @@
               <p>Users built confidence faster when the same header logic held up across every DW layout variation.</p>
             </article>
           </div>
-          <div class="project-detail-gallery">
+          <div class="project-detail-gallery dw-research-gallery">
             <figure class="project-detail-gallery-feature reveal">
               <img
                 src="./assets/internship-showcase-2026-dw-27-2400.webp"
@@ -234,38 +168,20 @@
           <div class="project-detail-section-head reveal">
             <div>
               <p class="project-detail-story-label">Final Design</p>
-              <h2>A consolidated header paired with onboarding tooltips made the workflow clearer.</h2>
+              <h2>A clearer header with lightweight guidance.</h2>
             </div>
-            <p>
-              The final proposal introduced one cleaner control surface, supported by tooltips and
-              research-informed refinements that improved discoverability without making the UI
-              louder.
-            </p>
+            <p>One consolidated header and contextual tooltips made six actions easier to find and understand.</p>
           </div>
-          <div class="project-detail-story">
-            <article class="project-detail-story-card reveal">
-              <span class="project-detail-story-label">Header</span>
-              <h3>One surface for the most important actions.</h3>
-              <p>
-                The consolidated header reduced the sense that controls were scattered or changing
-                unpredictably across Dynamic Window states.
-              </p>
-            </article>
+          <div class="project-detail-story dw-final-story">
             <article class="project-detail-story-card reveal">
               <span class="project-detail-story-label">Tooltips</span>
-              <h3>Guidance stayed lightweight and contextual.</h3>
-              <p>
-                The onboarding layer explained the new structure just enough to help first-time
-                use, without turning the experience into a tutorial.
-              </p>
+              <h3>Lightweight, contextual guidance.</h3>
+              <p>Tooltips explained the new structure without interrupting the workflow.</p>
             </article>
             <article class="project-detail-story-card reveal">
               <span class="project-detail-story-label">Refinement</span>
-              <h3>Research shaped the last interaction decisions.</h3>
-              <p>
-                The final details were informed by how quickly users understood the new grouping and
-                whether they could move across states without hesitation.
-              </p>
+              <h3>Research guided final decisions.</h3>
+              <p>Testing confirmed the grouping and behavior across Dynamic Window states.</p>
             </article>
           </div>
           <div class="project-detail-gallery">
@@ -355,6 +271,7 @@
       <site-footer></site-footer>
     </div>
     <script src="./scripts/project-data.js"></script>
+    <script src="./scripts/grainient-background.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

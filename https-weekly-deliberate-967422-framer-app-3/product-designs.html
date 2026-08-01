@@ -7,7 +7,8 @@
     <title>Latest Projects - Ruiying Xu</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body data-page="product-designs">
+  <body class="grainient-page" data-page="product-designs">
+    <div class="site-grainient" aria-hidden="true"><canvas></canvas></div>
     <div class="cursor" aria-hidden="true">
       <span class="cursor-dot"></span>
       <span class="cursor-ring"></span>
@@ -18,6 +19,8 @@
       <site-header></site-header>
 
       <main class="works-page">
+        <section class="listing-page-stage" data-listing-page-stage>
+          <div class="listing-page-sticky">
         <section class="works-hero panel">
           <div class="works-hero-copy reveal">
             <h1 class="works-page-title">Latest Projects</h1>
@@ -25,14 +28,7 @@
         </section>
 
         <section class="works-listing panel">
-          <div class="works-projects works-projects--grid">
-            <project-card project="nowAssist" variant="listing" eager></project-card>
-            <project-card project="aiControlTower" variant="listing"></project-card>
-            <project-card project="dwHeader" variant="listing"></project-card>
-            <project-card project="columnPinning" variant="listing"></project-card>
-            <project-card project="sheepguard" variant="listing"></project-card>
-            <project-card project="allerpal" variant="listing"></project-card>
-          </div>
+          <project-collection class="works-projects works-projects--grid" source="productDesigns" variant="listing"></project-collection>
         </section>
 
         <section class="contact-cta-panel panel reveal">
@@ -42,11 +38,14 @@
             <a class="contact-cta-button" href="mailto:yingingxu88@gmail.com">Get In Touch</a>
           </div>
         </section>
+          </div>
+        </section>
       </main>
 
       <site-footer></site-footer>
     </div>
     <script src="./scripts/project-data.js"></script>
+    <script src="./scripts/grainient-background.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
