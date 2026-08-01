@@ -1,0 +1,636 @@
+.about-page {
+  padding-top: 88px;
+}
+
+.about-page .panel {
+  border-top: 1px solid var(--line);
+  padding-inline: 5.4vw;
+}
+
+.about-page .panel + .panel {
+  padding-top: 10.5vw;
+  padding-bottom: 10.5vw;
+}
+
+.about-hero {
+  min-height: 100svh;
+  padding-top: 16vw;
+  padding-bottom: 9vw;
+}
+
+.about-hero-grid {
+  display: grid;
+  gap: 5vw;
+  grid-template-columns: minmax(0, 1.28fr) minmax(280px, .72fr);
+  margin-top: 10vw;
+}
+
+.about-page-title {
+  font-size: clamp(72px, 9.5vw, 172px);
+  font-weight: 700;
+  letter-spacing: -.086em;
+  line-height: .84;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-page-title em {
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -.05em;
+  text-transform: lowercase;
+}
+
+.about-hero-meta {
+  align-self: end;
+  display: grid;
+  gap: 10px;
+  max-width: 420px;
+  padding-bottom: 24px;
+}
+
+.about-hero-meta p {
+  color: var(--muted);
+  font-size: clamp(18px, 1.22vw, 22px);
+  letter-spacing: -.028em;
+  line-height: 1.45;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-section-heading {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 5.6vw;
+}
+
+.about-section-title {
+  font-size: clamp(54px, 5.6vw, 96px);
+  font-weight: 700;
+  letter-spacing: -.078em;
+  line-height: .9;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-section-title--small {
+  font-size: clamp(34px, 3vw, 48px);
+  line-height: .98;
+}
+
+.about-story-grid {
+  align-items: start;
+  display: grid;
+  gap: 5.2vw;
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, .82fr);
+}
+
+.about-story-copy {
+  display: grid;
+  gap: 32px;
+  max-width: 930px;
+}
+
+.about-story-copy p {
+  font-size: clamp(22px, 1.58vw, 27px);
+  letter-spacing: -.03em;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.about-story-stats {
+  display: grid;
+  gap: 14px;
+  padding-top: 12px;
+}
+
+.about-story-stats div {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.about-story-stats strong {
+  font-size: clamp(48px, 4.5vw, 78px);
+  font-weight: 400;
+  letter-spacing: -.07em;
+}
+
+.about-story-stats span {
+  color: var(--muted);
+  font-size: 16px;
+  letter-spacing: -.03em;
+  line-height: 1.35;
+  max-width: 180px;
+  text-transform: uppercase;
+}
+
+.about-process-list,
+.about-experience-list {
+  border-top: 1px solid var(--line);
+}
+
+.about-process-item,
+.about-experience-item {
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 26px;
+  padding: 32px 0 34px;
+}
+
+.about-process-item {
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+
+.about-process-item span,
+.about-experience-date,
+.about-fact-card span {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 15px;
+  letter-spacing: -.03em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-process-item h3,
+.about-experience-item h3,
+.about-fact-card h3 {
+  font-size: clamp(34px, 3.18vw, 54px);
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: .94;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+.about-process-item p,
+.about-experience-item p,
+.about-fact-card p,
+.about-fact-card small {
+  font-size: clamp(18px, 1.24vw, 21px);
+  letter-spacing: -.024em;
+  line-height: 1.52;
+  margin: 0;
+}
+
+.about-experience-timeline {
+  position: relative;
+}
+
+.about-experience-item {
+  align-items: start;
+  gap: 22px 28px;
+  grid-template-columns: 34px minmax(160px, .32fr) minmax(0, 1.68fr);
+  position: relative;
+}
+
+.about-experience-date {
+  white-space: nowrap;
+}
+
+.about-experience-marker {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+}
+
+.about-experience-marker::before {
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.18) 14%, rgba(255,255,255,.18) 86%, transparent);
+  content: "";
+  height: calc(100% + 68px);
+  left: 50%;
+  position: absolute;
+  top: -34px;
+  transform: translateX(-50%);
+  width: 2px;
+}
+
+.about-experience-item:first-child .about-experience-marker::before {
+  top: 16px;
+  height: calc(100% + 18px);
+}
+
+.about-experience-item:last-child .about-experience-marker::before {
+  height: 26px;
+  top: -34px;
+}
+
+.about-experience-marker span {
+  background: #101010;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  box-shadow: 0 0 0 8px #050505;
+  display: block;
+  height: 18px;
+  position: relative;
+  width: 18px;
+  z-index: 2;
+}
+
+.about-experience-marker span::before {
+  background: #efede6;
+  border-radius: 999px;
+  content: "";
+  inset: 4px;
+  position: absolute;
+}
+
+.about-experience-item h4 {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: -.02em;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.about-experience-content {
+  max-width: 1120px;
+}
+
+.about-facts-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.about-fact-card {
+  --card-bg: #120f17;
+  --edge-proximity: 0;
+  --cursor-angle: 45deg;
+  --edge-sensitivity: 39;
+  --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+  --border-radius: 10px;
+  --glow-padding: 26px;
+  --cone-spread: 27;
+  --fill-opacity: .36;
+  --gradient-one: radial-gradient(at 80% 55%, rgba(192, 132, 252, 1) 0px, transparent 50%);
+  --gradient-two: radial-gradient(at 69% 34%, rgba(244, 114, 182, 1) 0px, transparent 50%);
+  --gradient-three: radial-gradient(at 8% 6%, rgba(56, 189, 248, 1) 0px, transparent 50%);
+  --gradient-four: radial-gradient(at 41% 38%, rgba(192, 132, 252, 1) 0px, transparent 50%);
+  --gradient-five: radial-gradient(at 86% 85%, rgba(244, 114, 182, 1) 0px, transparent 50%);
+  --gradient-six: radial-gradient(at 82% 18%, rgba(56, 189, 248, 1) 0px, transparent 50%);
+  --gradient-seven: radial-gradient(at 51% 4%, rgba(244, 114, 182, 1) 0px, transparent 50%);
+  --gradient-base: linear-gradient(#c084fc 0 100%);
+  --glow-color: hsl(40deg 80% 80% / 100%);
+  --glow-color-60: hsl(40deg 80% 80% / 60%);
+  --glow-color-50: hsl(40deg 80% 80% / 50%);
+  --glow-color-40: hsl(40deg 80% 80% / 40%);
+  --glow-color-30: hsl(40deg 80% 80% / 30%);
+  --glow-color-20: hsl(40deg 80% 80% / 20%);
+  --glow-color-10: hsl(40deg 80% 80% / 10%);
+  background: #120f17;
+  display: grid;
+  gap: 12px;
+  isolation: isolate;
+  min-height: 246px;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: var(--border-radius);
+  overflow: visible;
+  padding: 18px 18px 20px;
+  position: relative;
+  transform: translate3d(0, 0, 0.01px);
+  transition: box-shadow .28s ease;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0 1px 2px,
+    rgba(0, 0, 0, 0.1) 0 2px 4px,
+    rgba(0, 0, 0, 0.1) 0 4px 8px,
+    rgba(0, 0, 0, 0.1) 0 8px 16px;
+}
+
+.about-fact-card p {
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.about-fact-card small {
+  color: var(--muted);
+  display: block;
+  margin-top: auto;
+}
+
+@media (pointer: fine) {
+  .about-fact-card::before,
+  .about-fact-card::after,
+  .about-fact-card > .edge-light {
+    border-radius: inherit;
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity .25s ease-out;
+  }
+
+  .about-fact-card > :not(.edge-light) {
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-fact-card > .edge-light {
+    inset: calc(var(--glow-padding) * -1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .about-fact-card:not(:hover)::before,
+  .about-fact-card:not(:hover)::after,
+  .about-fact-card:not(:hover) > .edge-light {
+    opacity: 0;
+    transition: opacity .75s ease-in-out;
+  }
+
+  .about-fact-card::before {
+    background:
+      linear-gradient(var(--card-bg, #120f17) 0 100%) padding-box,
+      linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
+      var(--gradient-one) border-box,
+      var(--gradient-two) border-box,
+      var(--gradient-three) border-box,
+      var(--gradient-four) border-box,
+      var(--gradient-five) border-box,
+      var(--gradient-six) border-box,
+      var(--gradient-seven) border-box,
+      var(--gradient-base) border-box;
+    border: 1px solid transparent;
+    mask-image:
+      conic-gradient(
+        from var(--cursor-angle) at center,
+        black calc(var(--cone-spread) * 1%),
+        transparent calc((var(--cone-spread) + 15) * 1%),
+        transparent calc((100 - var(--cone-spread) - 15) * 1%),
+        black calc((100 - var(--cone-spread)) * 1%)
+      );
+    opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+    z-index: -1;
+  }
+
+  .about-fact-card::after {
+    background:
+      var(--gradient-one) padding-box,
+      var(--gradient-two) padding-box,
+      var(--gradient-three) padding-box,
+      var(--gradient-four) padding-box,
+      var(--gradient-five) padding-box,
+      var(--gradient-six) padding-box,
+      var(--gradient-seven) padding-box,
+      var(--gradient-base) padding-box;
+    border: 1px solid transparent;
+    mask-image:
+      linear-gradient(to bottom, black, black),
+      radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+      radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+      radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+      radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+      radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+      conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+    mask-composite: subtract, add, add, add, add, add;
+    opacity: calc(var(--fill-opacity) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+    mix-blend-mode: soft-light;
+    z-index: -1;
+  }
+
+  .about-fact-card > .edge-light {
+    mask-image:
+      conic-gradient(
+        from var(--cursor-angle) at center,
+        black 2.5%,
+        transparent 10%,
+        transparent 90%,
+        black 97.5%
+      );
+    mix-blend-mode: plus-lighter;
+    opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+  }
+
+  .about-fact-card > .edge-light::before {
+    content: "";
+    position: absolute;
+    inset: var(--glow-padding);
+    border-radius: inherit;
+    box-shadow:
+      inset 0 0 0 1px var(--glow-color),
+      inset 0 0 1px 0 var(--glow-color-60),
+      inset 0 0 3px 0 var(--glow-color-50),
+      inset 0 0 6px 0 var(--glow-color-40),
+      inset 0 0 15px 0 var(--glow-color-30),
+      inset 0 0 25px 2px var(--glow-color-20),
+      inset 0 0 50px 2px var(--glow-color-10),
+      0 0 1px 0 var(--glow-color-60),
+      0 0 3px 0 var(--glow-color-50),
+      0 0 6px 0 var(--glow-color-40),
+      0 0 15px 0 var(--glow-color-30),
+      0 0 25px 2px var(--glow-color-20),
+      0 0 50px 2px var(--glow-color-10);
+  }
+
+  .about-fact-card:hover {
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0 1px 2px,
+      rgba(0, 0, 0, 0.1) 0 2px 4px,
+      rgba(0, 0, 0, 0.1) 0 4px 8px,
+      rgba(0, 0, 0, 0.1) 0 8px 16px,
+      rgba(0, 0, 0, 0.1) 0 16px 32px,
+      rgba(0, 0, 0, 0.1) 0 32px 64px;
+  }
+}
+
+.about-tools-marquee {
+  border-block: 1px solid var(--line);
+  display: grid;
+  gap: 14px;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.about-tools-marquee div {
+  animation: about-marquee 21s linear infinite;
+  display: inline-flex;
+  gap: 14px;
+  min-width: max-content;
+}
+
+.about-tool-pill {
+  --card-bg: #120f17;
+  --edge-proximity: 0;
+  --cursor-angle: 45deg;
+  --edge-sensitivity: 39;
+  --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+  --border-radius: 999px;
+  --glow-padding: 18px;
+  --cone-spread: 27;
+  --fill-opacity: .34;
+  --gradient-one: radial-gradient(at 80% 55%, rgba(192, 132, 252, 1) 0px, transparent 50%);
+  --gradient-two: radial-gradient(at 69% 34%, rgba(244, 114, 182, 1) 0px, transparent 50%);
+  --gradient-three: radial-gradient(at 8% 6%, rgba(56, 189, 248, 1) 0px, transparent 50%);
+  --gradient-four: radial-gradient(at 41% 38%, rgba(192, 132, 252, 1) 0px, transparent 50%);
+  --gradient-five: radial-gradient(at 86% 85%, rgba(244, 114, 182, 1) 0px, transparent 50%);
+  --gradient-six: radial-gradient(at 82% 18%, rgba(56, 189, 248, 1) 0px, transparent 50%);
+  --gradient-seven: radial-gradient(at 51% 4%, rgba(244, 114, 182, 1) 0px, transparent 50%);
+  --gradient-base: linear-gradient(#c084fc 0 100%);
+  --glow-color: hsl(40deg 80% 80% / 100%);
+  --glow-color-60: hsl(40deg 80% 80% / 60%);
+  --glow-color-50: hsl(40deg 80% 80% / 50%);
+  --glow-color-40: hsl(40deg 80% 80% / 40%);
+  --glow-color-30: hsl(40deg 80% 80% / 30%);
+  --glow-color-20: hsl(40deg 80% 80% / 20%);
+  --glow-color-10: hsl(40deg 80% 80% / 10%);
+  background: #120f17;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: var(--border-radius);
+  color: var(--ink);
+  display: inline-flex;
+  font-size: clamp(16px, 1.1vw, 19px);
+  isolation: isolate;
+  letter-spacing: -.025em;
+  overflow: visible;
+  padding: 11px 18px;
+  position: relative;
+  text-transform: uppercase;
+  transform: translate3d(0, 0, 0.01px);
+}
+
+.about-tool-pill > span:not(.edge-light) {
+  position: relative;
+  z-index: 2;
+}
+
+@media (pointer: fine) {
+  .about-tool-pill::before,
+  .about-tool-pill::after,
+  .about-tool-pill > .edge-light {
+    border-radius: inherit;
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity .25s ease-out;
+  }
+
+  .about-tool-pill > .edge-light {
+    inset: calc(var(--glow-padding) * -1);
+    z-index: 1;
+  }
+
+  .about-tool-pill:not(:hover)::before,
+  .about-tool-pill:not(:hover)::after,
+  .about-tool-pill:not(:hover) > .edge-light {
+    opacity: 0;
+    transition: opacity .75s ease-in-out;
+  }
+
+  .about-tool-pill::before {
+    background:
+      linear-gradient(var(--card-bg, #120f17) 0 100%) padding-box,
+      linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
+      var(--gradient-one) border-box,
+      var(--gradient-two) border-box,
+      var(--gradient-three) border-box,
+      var(--gradient-four) border-box,
+      var(--gradient-five) border-box,
+      var(--gradient-six) border-box,
+      var(--gradient-seven) border-box,
+      var(--gradient-base) border-box;
+    border: 1px solid transparent;
+    mask-image:
+      conic-gradient(
+        from var(--cursor-angle) at center,
+        black calc(var(--cone-spread) * 1%),
+        transparent calc((var(--cone-spread) + 15) * 1%),
+        transparent calc((100 - var(--cone-spread) - 15) * 1%),
+        black calc((100 - var(--cone-spread)) * 1%)
+      );
+    opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+    z-index: -1;
+  }
+
+  .about-tool-pill::after {
+    background:
+      var(--gradient-one) padding-box,
+      var(--gradient-two) padding-box,
+      var(--gradient-three) padding-box,
+      var(--gradient-four) padding-box,
+      var(--gradient-five) padding-box,
+      var(--gradient-six) padding-box,
+      var(--gradient-seven) padding-box,
+      var(--gradient-base) padding-box;
+    border: 1px solid transparent;
+    mask-image:
+      linear-gradient(to bottom, black, black),
+      radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+      radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+      radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+      radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+      radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+      conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+    mask-composite: subtract, add, add, add, add, add;
+    mix-blend-mode: soft-light;
+    opacity: calc(var(--fill-opacity) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+    z-index: -1;
+  }
+
+  .about-tool-pill > .edge-light {
+    mask-image:
+      conic-gradient(
+        from var(--cursor-angle) at center,
+        black 2.5%,
+        transparent 10%,
+        transparent 90%,
+        black 97.5%
+      );
+    mix-blend-mode: plus-lighter;
+    opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+  }
+
+  .about-tool-pill > .edge-light::before {
+    content: "";
+    position: absolute;
+    inset: var(--glow-padding);
+    border-radius: inherit;
+    box-shadow:
+      inset 0 0 0 1px var(--glow-color),
+      inset 0 0 1px 0 var(--glow-color-60),
+      inset 0 0 3px 0 var(--glow-color-50),
+      inset 0 0 6px 0 var(--glow-color-40),
+      inset 0 0 15px 0 var(--glow-color-30),
+      inset 0 0 25px 2px var(--glow-color-20),
+      inset 0 0 50px 2px var(--glow-color-10),
+      0 0 1px 0 var(--glow-color-60),
+      0 0 3px 0 var(--glow-color-50),
+      0 0 6px 0 var(--glow-color-40),
+      0 0 15px 0 var(--glow-color-30),
+      0 0 25px 2px var(--glow-color-20),
+      0 0 50px 2px var(--glow-color-10);
+  }
+}
+
+.about-cta {
+  min-height: 80svh;
+}
+
+.about-cta-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.about-cta-kicker {
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -.04em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-cta .contact-title {
+  margin-top: 7vw;
+}
+
+@keyframes about-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

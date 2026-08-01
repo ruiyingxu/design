@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Latest product design projects by Ruiying Xu." />
+    <title>Latest Projects - Ruiying Xu</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="product-designs">
+    <div class="cursor" aria-hidden="true">
+      <span class="cursor-dot"></span>
+      <span class="cursor-ring"></span>
+      <span class="cursor-label">View</span>
+    </div>
+
+    <div class="site-shell">
+      <site-header></site-header>
+
+      <main class="works-page">
+        <section class="works-hero panel">
+          <div class="works-hero-copy reveal">
+            <h1 class="works-page-title">Latest Projects</h1>
+          </div>
+        </section>
+
+        <section class="works-listing panel">
+          <div class="works-projects works-projects--grid">
+            <project-card project="nowAssist" variant="listing" eager></project-card>
+            <project-card project="aiControlTower" variant="listing"></project-card>
+            <project-card project="dwHeader" variant="listing"></project-card>
+            <project-card project="columnPinning" variant="listing"></project-card>
+            <project-card project="sheepguard" variant="listing"></project-card>
+            <project-card project="allerpal" variant="listing"></project-card>
+          </div>
+        </section>
+
+        <section class="contact-cta-panel panel reveal">
+          <div class="contact-cta-inner">
+            <p class="contact-cta-eyebrow">HAVE A PROJECT IN MIND ?</p>
+            <a class="contact-cta-headline contact-title" href="mailto:yingingxu88@gmail.com">LET'S WORK TOGETHER</a>
+            <a class="contact-cta-button" href="mailto:yingingxu88@gmail.com">Get In Touch</a>
+          </div>
+        </section>
+      </main>
+
+      <site-footer></site-footer>
+    </div>
+    <script src="./scripts/project-data.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
