@@ -212,7 +212,7 @@ class SiteHeader extends HTMLElement {
         <a class="nav-link desktop-link" href="./contact.html"><span>Contact</span><span aria-hidden="true">Contact</span></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open menu"><span></span><span></span></button>
       </header>
-      <nav class="mobile-menu" id="mobile-navigation" aria-label="Mobile navigation">
+      <nav class="mobile-menu" id="mobile-navigation" aria-label="Mobile navigation" aria-hidden="true" inert>
         <a href="./about.html">About</a>
         <a href="./works.html">Art Works</a>
         <a href="./product-designs.html">Product Designs</a>
@@ -254,28 +254,34 @@ const cursorLabel = document.querySelector(".cursor-label");
 const intro = document.querySelector(".intro");
 const cursorGallery = document.querySelector(".cursor-gallery");
 const heroSection = document.querySelector(".hero");
+const mobileNavigationQuery = window.matchMedia("(max-width: 900px)");
+
+const setMobileMenuState = (isOpen, { returnFocus = false } = {}) => {
+  if (!menuButton || !mobileMenu) return;
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  mobileMenu.classList.toggle("is-open", isOpen);
+  mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+  mobileMenu.inert = !isOpen;
+  if (returnFocus) menuButton.focus();
+};
 
 menuButton?.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-  menuButton.setAttribute("aria-expanded", String(!isOpen));
-  menuButton.setAttribute("aria-label", isOpen ? "Open menu" : "Close menu");
-  mobileMenu.classList.toggle("is-open", !isOpen);
+  setMobileMenuState(!isOpen);
 });
 
 mobileMenu?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "Open menu");
-    mobileMenu.classList.remove("is-open");
-  });
+  link.addEventListener("click", () => setMobileMenuState(false));
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape" || menuButton?.getAttribute("aria-expanded") !== "true") return;
-  menuButton.setAttribute("aria-expanded", "false");
-  menuButton.setAttribute("aria-label", "Open menu");
-  mobileMenu?.classList.remove("is-open");
-  menuButton.focus();
+  setMobileMenuState(false, { returnFocus: true });
+});
+
+mobileNavigationQuery.addEventListener?.("change", (event) => {
+  if (!event.matches) setMobileMenuState(false);
 });
 
 const replaceProjectPanel = (markers, src, alt) => {

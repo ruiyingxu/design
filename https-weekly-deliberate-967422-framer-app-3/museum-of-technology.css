@@ -20,8 +20,11 @@ body.mot-site h1,body.mot-site h2{font-weight:700}
 .mot-meta{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--mot-line);padding-top:16px;gap:16px;font-size:15px}
 .mot-media{position:relative;margin:0;overflow:hidden;border-radius:28px;background:#000;aspect-ratio:16/9}
 .mot-media img,.mot-media video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;background:#000}
-.mot-media--overscan img{transform:scale(1.015)}
+.mot-media:has(>img){aspect-ratio:auto}
+.mot-media img{position:static;height:auto;object-fit:contain}
+.mot-media--overscan img{transform:none}
 .mot-section{padding:9vw 3.5vw;border-top:1px solid var(--mot-line)}
+.mot-section .mot-media{--mot-media-offset:calc(3.5vw - 1.6vw);border-radius:clamp(12px,1.5vw,24px);margin-inline:calc(var(--mot-media-offset) * -1);width:calc(100% + var(--mot-media-offset) * 2)}
 .mot-section--dark{background:#0c0c0c;color:#f7f4ed}
 .mot-section--orange{background:var(--mot-orange)}
 .mot-heading{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.6fr);gap:6vw;align-items:end;margin-bottom:5vw}
@@ -29,14 +32,14 @@ body.mot-site h1,body.mot-site h2{font-weight:700}
 .mot-heading .mot-label{font-size:clamp(30px,4.5vw,64px);line-height:.92;letter-spacing:-.04em;margin:0;text-transform:uppercase}
 .mot-heading p{font-size:clamp(17px,1.55vw,24px);line-height:1.35;margin:0;max-width:580px}
 .mot-stack{display:grid;gap:28px}
-.mot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.mot-grid{display:grid;grid-template-columns:1fr;gap:28px}
 .mot-grid>.mot-media:only-child{grid-column:1/-1}
-.mot-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mot-grid--three{grid-template-columns:1fr}
 .mot-caption{display:flex;justify-content:space-between;gap:20px;margin:12px 4px 0;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
 .mot-site project-recommendations .panel{background:#0c0c0c;color:#f7f4ed}
 .mot-site project-recommendations .panel,.mot-site project-recommendations .panel *{font-family:"Test The Future",sans-serif}
 .mot-site .project-detail-more-heading h2,.mot-site .project-detail-more-link,.mot-site .project-detail-more-card h3,.mot-site .project-detail-more-card p{color:#f7f4ed}
 .mot-site project-recommendations .reveal{opacity:1;transform:none;transition:none}
 .mot-site .project-detail-more-card img,.mot-site .project-detail-more-card:hover img{transform:none;transition:none}
-@media(max-width:760px){.mot-main{padding-top:62px}.mot-hero{padding-top:clamp(96px,24vw,120px)}.mot-meta{grid-template-columns:repeat(2,1fr)}.mot-heading{grid-template-columns:1fr}.mot-grid,.mot-grid--three{grid-template-columns:1fr}.mot-section{padding:18vw 4vw}.mot-media{border-radius:16px}.mot-lead-media{border-radius:0}}
+@media(max-width:760px){.mot-main{padding-top:62px}.mot-hero{padding-top:clamp(96px,24vw,120px)}.mot-meta{grid-template-columns:repeat(2,1fr)}.mot-heading{grid-template-columns:1fr}.mot-grid,.mot-grid--three{grid-template-columns:1fr}.mot-section{padding:18vw 4vw}.mot-media{border-radius:16px}.mot-section .mot-media{--mot-media-offset:calc(4vw - 20px);border-radius:12px}.mot-lead-media{border-radius:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

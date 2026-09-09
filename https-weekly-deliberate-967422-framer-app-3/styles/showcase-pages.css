@@ -245,6 +245,13 @@
   min-height: 0;
 }
 
+.sheepguard-page .sheepguard-visual {
+  --sheepguard-media-offset: calc(clamp(20px, 4.2vw, 40px) - 1.6vw);
+  border-radius: clamp(12px, 1.5vw, 24px);
+  margin: 0 calc(var(--sheepguard-media-offset) * -1);
+  width: calc(100% + var(--sheepguard-media-offset) * 2);
+}
+
 .sheepguard-page .sheepguard-split .sheepguard-visual img,
 .sheepguard-page .sheepguard-visual-grid .sheepguard-visual img,
 .sheepguard-page .sheepguard-visual img {
@@ -786,6 +793,10 @@ body.allerpal-site * {
   max-width: 14ch;
 }
 
+#allerpal-product-title {
+  max-width: 20ch;
+}
+
 .allerpal-sequence-stack {
   display: grid;
   gap: clamp(18px, 2.2vw, 34px);
@@ -818,6 +829,15 @@ body.allerpal-site * {
   height: auto;
   object-fit: contain;
   width: 100%;
+}
+
+.allerpal-page .allerpal-brand-name,
+.allerpal-page .allerpal-sequence-stack figure {
+  --allerpal-media-offset: calc(clamp(20px, 4.2vw, 64px) - 1.6vw);
+  border: 0;
+  border-radius: clamp(12px, 1.5vw, 24px);
+  margin-inline: calc(var(--allerpal-media-offset) * -1);
+  width: calc(100% + var(--allerpal-media-offset) * 2);
 }
 
 .allerpal-intro-copy h1,
@@ -1196,6 +1216,13 @@ body.allerpal-site * {
     padding: 24px 20px;
   }
 
+  .allerpal-page .allerpal-brand-name,
+  .allerpal-page .allerpal-sequence-stack figure {
+    border-radius: 12px;
+    margin-inline: 0;
+    width: 100%;
+  }
+
   .allerpal-mast,
   .allerpal-intro,
   .allerpal-title-row,
@@ -1295,6 +1322,11 @@ body.allerpal-site * {
   }
 
   .sheepguard-user-flow-map {
+    width: 100%;
+  }
+
+  .sheepguard-page .sheepguard-visual {
+    margin: 0;
     width: 100%;
   }
 

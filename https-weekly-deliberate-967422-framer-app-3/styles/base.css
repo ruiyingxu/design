@@ -383,7 +383,8 @@ body[data-page="home"].is-ready .intro {
 /* Shared closing CTA: keep every page aligned with the Home interaction. */
 .contact-cta-headline.site-wide-cta-heading-swap {
   display: inline-grid;
-  font-size: clamp(68px, 9.5vw, 120px) !important;
+  font-size: clamp(68px, 7.5vw, 120px) !important;
+  max-width: 100%;
   overflow: hidden;
 }
 
@@ -397,6 +398,14 @@ body[data-page="home"].is-ready .intro {
 
 .contact-cta-headline.site-wide-cta-heading-swap > span:nth-child(2) {
   transform: translateY(105%);
+}
+
+@media (max-width: 900px) {
+  .contact-cta-headline.site-wide-cta-heading-swap {
+    font-size: clamp(48px, 13vw, 68px) !important;
+    white-space: normal;
+    width: 100%;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

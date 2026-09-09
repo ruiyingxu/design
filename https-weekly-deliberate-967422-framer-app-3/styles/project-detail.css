@@ -282,6 +282,23 @@ body.dw-page .dw-final-story {
   margin-bottom: clamp(32px, 4vw, 64px);
 }
 
+.column-pinning-page .project-detail-head {
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.column-pinning-page .project-detail-strap {
+  justify-self: start;
+  max-width: 46ch;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .column-pinning-page .project-detail-title {
+    font-size: clamp(36px, 11.5vw, 52px);
+  }
+}
+
 .column-pinning-page .project-detail-gallery figure,
 .column-pinning-page .project-detail-more-card figure {
   border-radius: clamp(12px, 1.5vw, 24px);

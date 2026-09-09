@@ -3,19 +3,23 @@ const path = require("path");
 const sharp = require("sharp");
 
 const root = path.resolve(__dirname, "..");
-const rasterPattern = /\.(?:png|jpe?g)$/i;
+const assetsRoot = path.join(root, "assets");
+const applyChanges = process.argv.includes("--apply");
+const isDryRun = !applyChanges;
 const sourcePattern = /(?:\.\/)?(assets\/[A-Za-z0-9_./-]+\.(?:png|jpe?g))/gi;
-const codeFiles = fs.readdirSync(root)
-  .filter((name) => name.endsWith(".html"))
-  .map((name) => path.join(root, name))
-  .concat([
-    path.join(root, "script.js"),
-    path.join(root, "scripts", "project-data.js"),
-    path.join(root, "styles.css")
-  ])
-  .concat(fs.readdirSync(path.join(root, "styles"))
-    .filter((name) => name.endsWith(".css"))
-    .map((name) => path.join(root, "styles", name)));
+const codeExtensions = new Set([".html", ".css", ".js"]);
+const ignoredCodeDirectories = new Set([".git", "assets"]);
+
+function listCodeFiles(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    if (entry.isDirectory() && ignoredCodeDirectories.has(entry.name)) return [];
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return listCodeFiles(fullPath);
+    return codeExtensions.has(path.extname(entry.name).toLowerCase()) ? [fullPath] : [];
+  });
+}
+
+const codeFiles = listCodeFiles(root);
 
 const sourcePaths = new Set();
 for (const file of codeFiles) {
@@ -39,11 +43,13 @@ async function convert(relativePath) {
 
   for (const width of widths) {
     const output = `${base}-${width}.webp`;
-    await sharp(absolutePath)
-      .rotate()
-      .resize({ width, withoutEnlargement: true })
-      .webp({ quality: 84, alphaQuality: 92, effort: 4, smartSubsample: true })
-      .toFile(path.join(root, output));
+    if (!isDryRun) {
+      await sharp(absolutePath)
+        .rotate()
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: 84, alphaQuality: 92, effort: 4, smartSubsample: true })
+        .toFile(path.join(root, output));
+    }
     variants.push({
       path: output,
       width,
@@ -56,7 +62,17 @@ async function convert(relativePath) {
     originalHeight: metadata.height,
     variants
   });
-  process.stdout.write(`Converted ${relativePath}\n`);
+  process.stdout.write(`${isDryRun ? "Would convert" : "Converted"} ${relativePath}\n`);
+}
+
+function writeTextFile(file, content) {
+  const previous = fs.readFileSync(file, "utf8");
+  if (previous === content) return;
+  if (isDryRun) {
+    process.stdout.write(`Would update ${path.relative(root, file)}\n`);
+    return;
+  }
+  fs.writeFileSync(file, content);
 }
 
 function setAttribute(tag, name, value) {
@@ -117,7 +133,7 @@ function updateHtml(file) {
     return `${prefix}./${mapping.variants[mapping.variants.length - 1].path}${suffix}`;
   });
 
-  fs.writeFileSync(file, content);
+  writeTextFile(file, content);
 }
 
 function updateScript(file) {
@@ -126,7 +142,7 @@ function updateScript(file) {
     const largest = mapping.variants[mapping.variants.length - 1];
     content = content.split(`./${source}`).join(`./${largest.path}`);
   }
-  fs.writeFileSync(file, content);
+  writeTextFile(file, content);
 }
 
 function listFiles(directory) {
@@ -138,56 +154,96 @@ function listFiles(directory) {
 
 function referencedAssets() {
   const referenced = new Set();
-  const pattern = /assets\/[A-Za-z0-9_./-]+\.(?:webp|mp4|mov|woff2?|ttf)/gi;
+  const pattern = /assets\/[A-Za-z0-9_./-]+\.(?:avif|gif|jpe?g|png|webp|mp4|mov|woff2?|ttf)/gi;
   for (const file of codeFiles) {
     const content = fs.readFileSync(file, "utf8");
     for (const match of content.matchAll(pattern)) referenced.add(match[0]);
   }
+
+  const imageBasePattern = /imageBase\s*:\s*["'`](\.\/?assets\/[A-Za-z0-9_./-]+)["'`]/gi;
+  for (const file of codeFiles) {
+    const content = fs.readFileSync(file, "utf8");
+    for (const match of content.matchAll(imageBasePattern)) {
+      const base = match[1].replace(/^\.\//, "");
+      [640, 1280, 2400].forEach((width) => referenced.add(`${base}-${width}.webp`));
+    }
+  }
+
+  for (const mapping of mappings.values()) {
+    mapping.variants.forEach((variant) => referenced.add(variant.path));
+  }
+
+  // These assets are selected at runtime rather than through project-data imageBase fields.
   ["assets/now-assist-directions", "assets/now-assist-takeaways"].forEach((base) => {
-    [640, 1280, 2400].forEach((width) => referenced.add(`${base}-${width}.webp`));
-  });
-  [
-    "assets/forma-cover-website",
-    "assets/now-assist-cover-from-repdf",
-    "assets/ai-pattern-cover-from-1pdf",
-    "assets/dw-cover-from-2pdf",
-    "assets/column-pinning-cover-from-ds-pdf",
-    "assets/sheepguard/sheepguard-cover-45",
-    "assets/allerpal/app-showcase"
-  ].forEach((base) => {
     [640, 1280, 2400].forEach((width) => referenced.add(`${base}-${width}.webp`));
   });
   return referenced;
 }
 
 (async () => {
-  const beforeBytes = listFiles(path.join(root, "assets"))
+  process.stdout.write(`Mode: ${isDryRun ? "dry-run (use --apply to write files)" : "apply"}\n`);
+  process.stdout.write(`Scanning ${codeFiles.length} HTML, CSS, and JavaScript files\n`);
+
+  const beforeBytes = listFiles(assetsRoot)
     .reduce((total, file) => total + fs.statSync(file).size, 0);
+  const initiallyReferenced = referencedAssets();
 
   for (const source of [...sourcePaths].sort()) await convert(source);
   for (const file of codeFiles.filter((file) => file.endsWith(".html"))) updateHtml(file);
   updateScript(path.join(root, "script.js"));
 
   const referenced = referencedAssets();
-  const deleted = [];
-  for (const file of listFiles(path.join(root, "assets"))) {
-    const relative = path.relative(root, file);
-    if (referenced.has(relative)) continue;
-    fs.unlinkSync(file);
-    deleted.push(relative);
+  // Never delete an asset that was referenced when this run started, even if
+  // an HTML rewrite points to a newly generated replacement later in the run.
+  initiallyReferenced.forEach((relative) => referenced.add(relative));
+  const plannedOutputs = new Set(
+    [...mappings.values()].flatMap((mapping) => mapping.variants.map((variant) => variant.path))
+  );
+  const missingReferenced = [...referenced]
+    .filter((relative) => !plannedOutputs.has(relative) && !fs.existsSync(path.join(root, relative)))
+    .sort();
+  if (missingReferenced.length) {
+    throw new Error(`Referenced assets are missing:\n${missingReferenced.join("\n")}`);
   }
 
-  const afterFiles = listFiles(path.join(root, "assets"));
+  const deleteCandidates = [];
+  for (const file of listFiles(assetsRoot)) {
+    const relative = path.relative(root, file);
+    if (referenced.has(relative)) continue;
+    deleteCandidates.push(relative);
+  }
+
+  const referencedDeleteCandidates = deleteCandidates.filter((relative) => referenced.has(relative));
+  if (referencedDeleteCandidates.length) {
+    throw new Error(`Referenced assets entered the deletion list:\n${referencedDeleteCandidates.join("\n")}`);
+  }
+
+  if (isDryRun) {
+    deleteCandidates.forEach((relative) => process.stdout.write(`Would delete ${relative}\n`));
+  } else {
+    deleteCandidates.forEach((relative) => fs.unlinkSync(path.join(root, relative)));
+  }
+
+  const afterFiles = listFiles(assetsRoot);
   const afterBytes = afterFiles.reduce((total, file) => total + fs.statSync(file).size, 0);
   const manifest = {
     generatedAt: new Date().toISOString(),
+    mode: isDryRun ? "dry-run" : "apply",
+    scannedCodeFiles: codeFiles.length,
+    referencedAssets: referenced.size,
+    protectedCurrentReferences: initiallyReferenced.size,
+    referencedDeleteCandidates: referencedDeleteCandidates.length,
+    missingReferencedAssets: missingReferenced.length,
     convertedSources: mappings.size,
-    deletedFiles: deleted.length,
+    deleteCandidates: deleteCandidates.length,
+    deletedFiles: isDryRun ? 0 : deleteCandidates.length,
     beforeBytes,
     afterBytes,
     savedBytes: beforeBytes - afterBytes
   };
-  fs.writeFileSync(path.join(root, "asset-optimization-manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
+  if (!isDryRun) {
+    fs.writeFileSync(path.join(root, "asset-optimization-manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
+  }
   process.stdout.write(`${JSON.stringify(manifest, null, 2)}\n`);
 })().catch((error) => {
   console.error(error);
